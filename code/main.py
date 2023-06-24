@@ -10,14 +10,32 @@ class Game:
         self.player_group = pg.sprite.GroupSingle()
         self.player_group.add(player)
 
-        # Inciando primeiro esteróide
-        asteroid = Asteroids((SCREEN_WIDTH / 2, 0))
+        # Timer para Asteróids
+        self.current_time = 0
+        self.static_point = 0
+
+
+        # Grupo de Sprites dos Asteróides
         self.asteroids_group = pg.sprite.Group()
-        self.asteroids_group.add(asteroid)
+        self.new_asteroids()
+
+        
+    def new_asteroids(self):
+        # Iniciando varios asteróides
+        for number in range(2):
+            asteroid = Asteroids((rd.randrange(650), 0))
+            self.asteroids_group.add(asteroid)
+
 
     def run(self):
         self.player_group.update()
         self.player_group.draw(screen)
+
+        self.current_time = pg.time.get_ticks()
+
+        if self.current_time - self.static_point > 2000:
+            self.new_asteroids()
+            self.static_point = pg.time.get_ticks()
 
         self.asteroids_group.update()
         self.asteroids_group.draw(screen)
@@ -31,6 +49,7 @@ if __name__ == '__main__':
     clock = pg.time.Clock()
     running = True
     game = Game()
+
 
     while running:
         for event in pg.event.get():
