@@ -2,17 +2,16 @@ import pygame as pg
 import random as rd
 from player import Player
 from asteroids import Asteroids
-import spritesheet
 
 class Game:
     def __init__(self):
         # Iniciando o Player
-        player = Player((SCREEN_WIDTH / 2, 650))
+        player = Player((SCREEN_WIDTH / 2, 600))
         self.player_group = pg.sprite.GroupSingle()
         self.player_group.add(player)
 
         # Inciando primeiro esteróide
-        asteroid = Asteroids((SCREEN_WIDTH/2, 0))
+        asteroid = Asteroids((SCREEN_WIDTH / 2, 0))
         self.asteroids_group = pg.sprite.Group()
         self.asteroids_group.add(asteroid)
 
