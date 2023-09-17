@@ -10,12 +10,8 @@ class Asteroids(pg.sprite.Sprite):
 
 		self.speed = 3
 
-	'''
-	def create_new_asteroids(self):
-		asteroid2 = Asteroids((50, 0))
-		self.asteroid_group = pg.sprite.Group()
-		self.asteroid_group.add(asteroid)
-	'''
+	def colide_with_player(self):
+		pass
 
 	def update(self):
 		self.rect.y += self.speed

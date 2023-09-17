@@ -2,9 +2,15 @@ import pygame as pg
 import random as rd
 from player import Player
 from asteroids import Asteroids
+from background import Background
 
 class Game:
     def __init__(self):
+        # Iniciando o Background
+        bg = Background()
+        self.bg_group = pg.sprite.GroupSingle()
+        self.bg_group.add(bg)
+
         # Iniciando o Player
         player = Player((SCREEN_WIDTH / 2, 600))
         self.player_group = pg.sprite.GroupSingle()
@@ -28,6 +34,8 @@ class Game:
 
 
     def run(self):
+        self.bg_group.draw(screen)
+
         self.player_group.update()
         self.player_group.draw(screen)
 
